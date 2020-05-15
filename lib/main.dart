@@ -8,7 +8,6 @@ import 'fish.dart';
 import 'pig.dart';
 import 'about.dart';
 import 'contacts.dart';
-import 'bull.dart';
 void main() {
   runApp(
     MaterialApp(
@@ -22,7 +21,6 @@ void main() {
         '/pig': (BuildContext context) => pig(),
         '/contacts' : (BuildContext context) => contacts(),
         '/about':(BuildContext context) => about(),
-        '/bull':(BuildContext context) => bull(),
       },
       theme: ThemeData(
         primaryColor: Colors.deepOrange,
@@ -231,7 +229,7 @@ class _MainScreenState extends State<MainScreen> {
                       IconButton(icon: Icon(Icons.star_half), onPressed: () {}),
                       Expanded(child:
                       FlatButton(onPressed: () {
-                        Navigator.pushNamed(context, '/bull');
+                        Navigator.pushNamed(context, '/pig');
                       },
                         child: Text('Guide to help pigs',textDirection: TextDirection.ltr,textAlign: TextAlign.right,style: TextStyle(fontSize: 25.0,fontStyle: FontStyle.italic),
                         ),
