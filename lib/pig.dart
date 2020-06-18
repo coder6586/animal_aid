@@ -24,7 +24,7 @@ class _pigState extends State<pig> {
                 centerTitle: true,
                 title: Text('Help Pigs'),
                 elevation: 0.0,
-                backgroundColor: Colors.blueGrey.withOpacity(0.1),
+                backgroundColor: Colors.blueGrey.withOpacity(0.0),
               ),
 
               body: Container(
@@ -37,7 +37,7 @@ class _pigState extends State<pig> {
                         color: Colors.transparent.withOpacity(0.1),
                         child:ClipRect(
                           child:BackdropFilter(
-                            filter: ImageFilter.blur(sigmaX: 8.0,sigmaY: 8.0),
+                            filter: ImageFilter.blur(sigmaX: 6.0,sigmaY: 6.0),
 
                             child: Column(
                               children: <Widget>[

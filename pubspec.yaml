@@ -51,6 +51,9 @@ flutter:
     - images/5.jpg
     - images/6.jpg
     - images/7.jpg
+    - images/8.jpg
+    - images/9.jpg
+    - images/10.jpg
     - images/pro.jpg
     - images/load.gif
 
@@ -74,6 +77,9 @@ flutter:
          - asset: fonts/AmaticSC-Regular.ttf
          - asset: fonts/AmaticSC-Bold.ttf
            weight: 700
+     - family: Itim
+       fonts:
+          - asset: fonts/Itim-Regular.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

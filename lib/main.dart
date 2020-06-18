@@ -1,3 +1,7 @@
+
+import 'dart:ui';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:splashscreen/splashscreen.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -8,6 +12,9 @@ import 'fish.dart';
 import 'pig.dart';
 import 'about.dart';
 import 'contacts.dart';
+import 'rabbit.dart';
+import 'goat.dart';
+import 'mouse.dart';
 void main() {
   runApp(
     MaterialApp(
@@ -21,10 +28,12 @@ void main() {
         '/pig': (BuildContext context) => pig(),
         '/contacts' : (BuildContext context) => contacts(),
         '/about':(BuildContext context) => about(),
+        '/rabbit':(BuildContext context) => rabbit(),
+        '/goat':(BuildContext context) =>goat(),
+        '/mouse':(BuildContext context) => mouse(),
       },
       theme: ThemeData(
         primaryColor: Colors.deepOrange,
-        brightness: Brightness.dark,
       ),
     ),
   );
@@ -64,193 +73,311 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Animals Aid',textDirection: TextDirection.ltr,),
-      ),
-      drawer: Drawer(
-          child: Column(
-            children: <Widget>[
-              Stack(
+    return MaterialApp(
+      home: Container(
+        child: Stack(
+          fit: StackFit.expand,
+          children: <Widget>[
+
+            Scaffold(
+              backgroundColor: Colors.white,
+              appBar: AppBar(
+                title: Text('Animal Aid',style: TextStyle(color: Colors.black),),
+                elevation: 0.0,
+                backgroundColor: Colors.green.withOpacity(0.5),
+              ),
+              drawer: Drawer(
+                  child: Column(
+                    children: <Widget>[
+                      Stack(
+                        children: <Widget>[
+                          Image(
+                            image: AssetImage("images/1.jpg"),
+                            width: double.infinity,
+                            fit: BoxFit.fitWidth,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: 180.0, left: 16.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text("Extras", style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 26.0,
+                                    color: Colors.white
+                                ),
+                                ),
+
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      ListView(
+                        shrinkWrap: true,
+                        children: <Widget>[
+                          ListTile(
+                            leading: Icon(Icons.contacts),
+                            title: Text('Useful Websites'),
+                            onTap: () {
+                              Navigator.pushNamed(context, '/contacts');
+                            },
+                          ),
+                        ],
+                      ),
+                      ListView(
+                        shrinkWrap: true,
+                        children: <Widget>[
+                          ListTile(
+                            leading: Icon(Icons.person),
+                            title: Text('About Us'),
+                            onTap: () {
+                              Navigator.pushNamed(context, '/about');
+                            },
+                          ),
+                        ],
+                      ),
+                    ],
+                  )
+              ),
+              body: GridView.count(
+                crossAxisCount: 2,
                 children: <Widget>[
-                  Image(
-                    image: AssetImage("images/1.jpg"),
-                    width: double.infinity,
-                    fit: BoxFit.fitWidth,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(top: 180.0, left: 16.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text("Extras", style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 26.0,
-                            color: Colors.white
-                        ),
+                  Padding(padding: EdgeInsets.all(7.0),
+                    child: Card(
+                      color: Colors.green[100],
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                      child: InkWell(
+                        onTap:() {
+                          Navigator.pushNamed(context, '/dog');
+                        },
+
+                        child: Stack(
+                          fit:StackFit.expand,
+                          children: <Widget>[
+                            Image.asset('images/3.jpg',fit: BoxFit.scaleDown,),
+                            Positioned(
+                              bottom: 0,
+                              right: 8,
+                              child:ClipRect(
+                                child:BackdropFilter(filter: ImageFilter.blur(sigmaX: 5.0,sigmaY: 5.0),
+                                  child:Text('First Aid For dogs',style: TextStyle(fontSize: 20.0,color: Colors.black,fontFamily: 'Itim',),),),),)
+
+                          ],
                         ),
 
-                      ],
+                      ),
                     ),
                   ),
-                ],
-              ),
-              ListView(
-                shrinkWrap: true,
-                children: <Widget>[
-                  ListTile(
-                    leading: Icon(Icons.contacts),
-                    title: Text('Useful Websites'),
-                    onTap: () {
-                      Navigator.pushNamed(context, '/contacts');
-                    },
-                  ),
-                ],
-              ),
-              ListView(
-                shrinkWrap: true,
-                children: <Widget>[
-                  ListTile(
-                    leading: Icon(Icons.person),
-                    title: Text('About Us'),
-                    onTap: () {
-                      Navigator.pushNamed(context, '/about');
-                    },
-                  ),
-                ],
-              ),
-            ],
-          )
-      ),
-      body: Container(
-        height: double.infinity,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('images/6.jpg'),
-            fit: BoxFit.cover,
+                  Padding(padding: EdgeInsets.all(12.0),
+                    child: Card(
+                      color: Colors.green[100],
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                      child: InkWell(
+                        onTap:() {
+                          Navigator.pushNamed(context, '/bird');
+                        },
 
-          ),
+                          child: Stack(
+                            fit:StackFit.expand,
+                            children: <Widget>[
+                              Image.asset('images/4.jpg',fit: BoxFit.scaleDown,),
+                                Positioned(
+                                  bottom: 0,
+                                  right: 2,
+                                child:ClipRect(
+                                  child:BackdropFilter(filter: ImageFilter.blur(sigmaX: 5.0,sigmaY: 5.0),
+                                    child:Text('First Aid For birds',style: TextStyle(fontSize: 20.0,color: Colors.black,fontFamily: 'Itim',),),),),)
+                            ],
+                          ),
+                      ),
+                    ),
+                  ),
+                  Padding(padding: EdgeInsets.all(12.0),
+                    child: Card(
+                      color: Colors.green[100],
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                      child: InkWell(
+                        onTap:() {
+                          Navigator.pushNamed(context, '/cat');
+                        },
+
+                        child: Stack(
+                          fit:StackFit.expand,
+                          children: <Widget>[
+                            Image.asset('images/2.jpg',fit: BoxFit.scaleDown,),
+                            Positioned(
+                              bottom: 0,
+                              right: 2,
+                              child:ClipRect(
+                                child:BackdropFilter(filter: ImageFilter.blur(sigmaX: 5.0,sigmaY: 5.0),
+                                  child:Text('First Aid For cats',style: TextStyle(fontSize: 20.0,color: Colors.black,fontFamily: 'Itim',),),),),)
+
+                          ],
+                        ),
+
+                      ),
+                    ),
+                  ),
+                  Padding(padding: EdgeInsets.all(12.0),
+                    child: Card(
+                      color: Colors.green[100],
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                      child: InkWell(
+                        onTap:() {
+                          Navigator.pushNamed(context, '/pig');
+                        },
+
+                        child: Stack(
+                          fit:StackFit.expand,
+                          children: <Widget>[
+                            Image.asset('images/7.jpg',fit: BoxFit.scaleDown,),
+                            Positioned(
+                              bottom: 0,
+                              right: 2,
+                              child:ClipRect(
+                                child:BackdropFilter(filter: ImageFilter.blur(sigmaX: 5.0,sigmaY: 5.0),
+                                  child:Text('First Aid For pigs',style: TextStyle(fontSize: 20.0,color: Colors.black,fontFamily: 'Itim',),),),),)
+
+                          ],
+                        ),
+
+                      ),
+                    ),
+                  ),
+                  Padding(padding: EdgeInsets.all(12.0),
+                    child: Card(
+                      color: Colors.green[100],
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                      child: InkWell(
+                        onTap:() {
+                          Navigator.pushNamed(context, '/fish');
+                        },
+
+                        child: Stack(
+                          fit:StackFit.expand,
+                          children: <Widget>[
+                            Image.asset('images/5.jpg',fit: BoxFit.scaleDown,),
+                            Positioned(
+                              bottom: 0,
+                              right: 2,
+                              child:ClipRect(
+                                child:BackdropFilter(filter: ImageFilter.blur(sigmaX: 5.0,sigmaY: 5.0),
+                                  child:Text('First Aid For fish',style: TextStyle(fontSize: 20.0,color: Colors.black,fontFamily: 'Itim',),),),),)
+
+                          ],
+                        ),
+
+                      ),
+                    ),
+                  ),
+                  Padding(padding: EdgeInsets.all(12.0),
+                    child: Card(
+                      color: Colors.green[100],
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                      child: InkWell(
+                        onTap:() {
+                          Navigator.pushNamed(context, '/rabbit');
+                        },
+
+                        child: Stack(
+                          fit:StackFit.expand,
+                          children: <Widget>[
+                            Image.asset('images/8.jpg',fit: BoxFit.scaleDown,),
+                            Positioned(
+                              bottom: 0,
+                              right: 2,
+                              child:ClipRect(
+                                child:BackdropFilter(filter: ImageFilter.blur(sigmaX: 5.0,sigmaY: 5.0),
+                                  child:Text('First Aid For rabbits',style: TextStyle(fontSize: 20.0,color: Colors.black,fontFamily: 'Itim',),),),),)
+
+                          ],
+                        ),
+
+                      ),
+                    ),
+                  ),
+                  Padding(padding: EdgeInsets.all(12.0),
+                    child: Card(
+                      color: Colors.green[100],
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                      child: InkWell(
+                        onTap:() {
+                          Navigator.pushNamed(context, '/goat');
+                        },
+
+                        child: Stack(
+                          fit:StackFit.expand,
+                          children: <Widget>[
+                            Image.asset('images/9.jpg',fit: BoxFit.scaleDown,),
+                            Positioned(
+                              bottom: 0,
+                              right: 2,
+                              child:ClipRect(
+                                child:BackdropFilter(filter: ImageFilter.blur(sigmaX: 5.0,sigmaY: 5.0),
+                                  child:Text('First Aid For goats',style: TextStyle(fontSize: 20.0,color: Colors.black,fontFamily: 'Itim',),),),),)
+
+                          ],
+                        ),
+
+                      ),
+                    ),
+                  ),
+                  Padding(padding: EdgeInsets.all(12.0),
+                    child: Card(
+                      color: Colors.green[100],
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                      child: InkWell(
+                        onTap:() {
+                          Navigator.pushNamed(context, '/mouse');
+                        },
+
+                        child: Stack(
+                          fit:StackFit.expand,
+                          children: <Widget>[
+                            Image.asset('images/10.jpg',fit: BoxFit.scaleDown,),
+                            Positioned(
+                              bottom: 0,
+                              right: 2,
+                              child:ClipRect(
+                                child:BackdropFilter(filter: ImageFilter.blur(sigmaX: 5.0,sigmaY: 5.0),
+                                  child:Text('First Aid For mouse',style: TextStyle(fontSize: 20.0,color: Colors.black,fontFamily: 'Itim',),),),),)
+
+                          ],
+                        ),
+
+                      ),
+                    ),
+                  ),
+
+
+                ],
+              ),
+              floatingActionButton: FloatingActionButton(
+                backgroundColor: Colors.green,
+                child: Icon(Icons.map),
+                onPressed: _launchURL,
+              ),
+            ),
+
+          ],
         ),
-        child:SingleChildScrollView(
-          child:Column(
-            children: <Widget>[
-              Padding(padding: EdgeInsets.all(24.0),
-                child: Card(
-                  color: Colors.transparent,
-                  child: Row(
-                    children: <Widget>[
-                      IconButton(icon: Icon(Icons.star_half), onPressed: () {}),
-                      Expanded(child:
-                      FlatButton(onPressed: () {
-                        Navigator.pushNamed(context, '/dog');
-                      },
-                        child: Text('Guide to help dogs',textDirection: TextDirection.ltr,textAlign: TextAlign.right,style: TextStyle(fontSize: 25.0,fontStyle: FontStyle.italic),
-                        ),
-                      ),
-                      ),
-                      IconButton(icon: Icon(Icons.arrow_forward_ios), onPressed: () {
-                        Navigator.pushNamed(context, '/dog');
-                      },
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Padding(padding: EdgeInsets.all(24.0),
-                child: Card(
-                  color: Colors.transparent,
-                  child: Row(
-                    children: <Widget>[
-                      IconButton(icon: Icon(Icons.star_half), onPressed: () {}),
-                      Expanded(child:
-                      FlatButton(onPressed: () {
-                        Navigator.pushNamed(context, '/cat');
-                      },
-                        child: Text('Guide to help cats',textDirection: TextDirection.ltr,textAlign: TextAlign.right,style: TextStyle(fontSize: 25.0,fontStyle: FontStyle.italic),
-                        ),
-                      ),
-                      ),
-                      IconButton(icon: Icon(Icons.arrow_forward_ios), onPressed: () {
-                        Navigator.pushNamed(context, '/cat');
-                      },
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Padding(padding: EdgeInsets.all(24.0),
-                child: Card(
-                  color: Colors.transparent,
-                  child: Row(
-                    children: <Widget>[
-                      IconButton(icon: Icon(Icons.star_half), onPressed: () {}),
-                      Expanded(child:
-                      FlatButton(onPressed: () {
-                        Navigator.pushNamed(context, '/bird');
-                      },
-                        child: Text('Guide to help birds',textDirection: TextDirection.ltr,textAlign: TextAlign.right,style: TextStyle(fontSize: 25.0,fontStyle: FontStyle.italic),
-                        ),
-                      ),
-                      ),
-                      IconButton(icon: Icon(Icons.arrow_forward_ios), onPressed: () {
-                        Navigator.pushNamed(context, '/bird');
-                      },
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Padding(padding: EdgeInsets.all(24.0),
-                child: Card(
-                  color: Colors.transparent,
-                  child: Row(
-                    children: <Widget>[
-                      IconButton(icon: Icon(Icons.star_half), onPressed: () {}),
-                      Expanded(child:
-                      FlatButton(onPressed: () {
-                        Navigator.pushNamed(context, '/fish');
-                      },
-                        child: Text('Guide to help fish',textDirection: TextDirection.ltr,textAlign: TextAlign.right,style: TextStyle(fontSize: 25.0,fontStyle: FontStyle.italic),
-                        ),
-                      ),
-                      ),
-                      IconButton(icon: Icon(Icons.arrow_forward_ios), onPressed: () {
-                        Navigator.pushNamed(context, '/fish');            },
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Padding(padding: EdgeInsets.all(24.0),
-                child: Card(
-                  color: Colors.transparent,
-                  child: Row(
-                    children: <Widget>[
-                      IconButton(icon: Icon(Icons.star_half), onPressed: () {}),
-                      Expanded(child:
-                      FlatButton(onPressed: () {
-                        Navigator.pushNamed(context, '/pig');
-                      },
-                        child: Text('Guide to help pigs',textDirection: TextDirection.ltr,textAlign: TextAlign.right,style: TextStyle(fontSize: 25.0,fontStyle: FontStyle.italic),
-                        ),
-                      ),
-                      ),
-                      IconButton(icon: Icon(Icons.arrow_forward_ios), onPressed: () {
-                        Navigator.pushNamed(context, '/pig');
-                      },
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.blue,
-        child: Icon(Icons.map),
-        onPressed: _launchURL,
       ),
     );
   }
